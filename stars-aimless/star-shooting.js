@@ -407,7 +407,7 @@ var StarField = /** @class */ (function () {
           if (!this.mouseMoved || this.mouseMoving) {
               // when mouse is moving, make controls visible instantly
               this.mouseControlAlpha = 0.3;
-              this.drawMouseControl();
+            //   this.drawMouseControl();
           }
           else {
               // when mouse stops moving, start fading out the opacity slowly
@@ -415,7 +415,7 @@ var StarField = /** @class */ (function () {
               // just kinda hacked in a rough approximation by feel on my machine lol
               // good enough for now
               this.mouseControlAlpha -= (0.25 * this.deltaTime) / this.UIFadeDelay;
-              this.drawMouseControl();
+            //   this.drawMouseControl();
           }
       }
       // update and draw all the stars
