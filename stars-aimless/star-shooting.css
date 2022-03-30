@@ -9,7 +9,7 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    /* background: #050014; */
+    background: transparent !important;
     user-select: none;
 }
 #mouse-control-control {
