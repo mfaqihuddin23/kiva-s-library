@@ -372,36 +372,36 @@ var StarField = /** @class */ (function () {
       var _a = this.container, size = _a[0], depth = _a[1];
       this.context.clearRect(-size / 2, -size / 2, size, size);
   };
-  StarField.prototype.drawMouseControl = function () {
-      var context = this.context;
-      var _a = this.screen, width = _a[0], height = _a[1];
-      var ellipseX = 0, ellipseY = height * 0.25;
-      var ellipseW = 50, ellipseH = 21;
-      ellipseH *= mapRange(this.mouseY, -height / 2 + ellipseY, height / 2 + ellipseY, 0.8, 1.2);
-      var pointIsInEllipse = isInEllipse(this.mouseX, this.mouseY, ellipseX, ellipseY, ellipseW, ellipseH);
-      if (pointIsInEllipse) {
-          this.xSpeed = 0;
-          this.zSpeed = 0;
-      }
-      var xSpin = this.mouseX / width;
-      // ellipse
-      context.beginPath();
-      context.ellipse(ellipseX, ellipseY, ellipseW, ellipseH, xSpin, 0, 2 * Math.PI);
-      context.strokeStyle = "rgba(255, 255, 255, ".concat(this.mouseControlAlpha, ")");
-      context.lineWidth = 2;
-      context.stroke();
-      var scaleFactor = 1;
-      if (-this.mouseY > 0) {
-          scaleFactor = mapRange(Math.abs(this.mouseX / width), 0, 1, 2, 0);
-      }
-      var lineDist = distance([ellipseX, ellipseY], [this.mouseX, this.mouseY * scaleFactor]);
-      var _b = limitToCircle(this.mouseX, this.mouseY, ellipseX, ellipseY, lineDist / 2), limitedMouseX = _b[0], limitedMouseY = _b[1];
-      // input-tracking line
-      context.beginPath();
-      context.moveTo(ellipseX, ellipseY);
-      context.lineTo(limitedMouseX, limitedMouseY);
-      context.stroke();
-  };
+//   StarField.prototype.drawMouseControl = function () {
+//       var context = this.context;
+//       var _a = this.screen, width = _a[0], height = _a[1];
+//       var ellipseX = 0, ellipseY = height * 0.25;
+//       var ellipseW = 50, ellipseH = 21;
+//       ellipseH *= mapRange(this.mouseY, -height / 2 + ellipseY, height / 2 + ellipseY, 0.8, 1.2);
+//       var pointIsInEllipse = isInEllipse(this.mouseX, this.mouseY, ellipseX, ellipseY, ellipseW, ellipseH);
+//       if (pointIsInEllipse) {
+//           this.xSpeed = 0;
+//           this.zSpeed = 0;
+//       }
+//       var xSpin = this.mouseX / width;
+//       // ellipse
+//       context.beginPath();
+//       context.ellipse(ellipseX, ellipseY, ellipseW, ellipseH, xSpin, 0, 2 * Math.PI);
+//       context.strokeStyle = "rgba(255, 255, 255, ".concat(this.mouseControlAlpha, ")");
+//       context.lineWidth = 2;
+//       context.stroke();
+//       var scaleFactor = 1;
+//       if (-this.mouseY > 0) {
+//           scaleFactor = mapRange(Math.abs(this.mouseX / width), 0, 1, 2, 0);
+//       }
+//       var lineDist = distance([ellipseX, ellipseY], [this.mouseX, this.mouseY * scaleFactor]);
+//       var _b = limitToCircle(this.mouseX, this.mouseY, ellipseX, ellipseY, lineDist / 2), limitedMouseX = _b[0], limitedMouseY = _b[1];
+//       // input-tracking line
+//       context.beginPath();
+//       context.moveTo(ellipseX, ellipseY);
+//       context.lineTo(limitedMouseX, limitedMouseY);
+//       context.stroke();
+//   };
   StarField.prototype.render = function () {
       if (this.showMouseControls) {
           if (!this.mouseMoved || this.mouseMoving) {
