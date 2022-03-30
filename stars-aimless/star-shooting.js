@@ -62,8 +62,8 @@ var IS_HIGH_RES_AND_MOBILE = (IS_HIGH_RES.matches && IS_MOBILE);
 var Star = /** @class */ (function () {
   function Star(container) {
       var size = container[0], depth = container[1];
-      this.FORWARD_SPEED = 500;
-      this.SIDEWAYS_SPEED = 100;
+      this.FORWARD_SPEED = 500;  //star speed 500
+      this.SIDEWAYS_SPEED = 200; //star speed 100
       if (IS_HIGH_RES_AND_MOBILE) {
           this.FORWARD_SPEED *= 2;
           this.SIDEWAYS_SPEED *= 2;
@@ -192,15 +192,15 @@ var Star = /** @class */ (function () {
       * Easter Egg #2 ^.^
       * uncomment the snippet below to add little tracer lines that follow the mouse/touch
       */
-      // if (Math.min(width, height)/2 > distance([mouseX, mouseY], [sx, sy]) && this.z < depth/2) {
-      //   context.beginPath();
-      //   context.moveTo(sx, sy);
-      //   let [mX, mY] = limitToCircle(mouseX, mouseY, sx, sy, 50);
-      //   context.lineTo(mX, mY);
-      //   context.lineWidth = radius;
-      //   context.strokeStyle = this.color.replace(')', `, ${mapRange(this.z, 0, depth, 0.1, 0.6)})`);
-      //   context.stroke();
-      // }
+      if (Math.min(width, height)/2 > distance([mouseX, mouseY], [sx, sy]) && this.z < depth/2) {
+        context.beginPath();
+        context.moveTo(sx, sy);
+        let [mX, mY] = limitToCircle(mouseX, mouseY, sx, sy, 50);
+        context.lineTo(mX, mY);
+        context.lineWidth = radius;
+        context.strokeStyle = this.color.replace(')', `, ${mapRange(this.z, 0, depth, 0.1, 0.6)})`);
+        context.stroke();
+      }
   };
   return Star;
 }());
@@ -407,7 +407,7 @@ var StarField = /** @class */ (function () {
           if (!this.mouseMoved || this.mouseMoving) {
               // when mouse is moving, make controls visible instantly
               this.mouseControlAlpha = 0.3;
-              this.drawMouseControl();
+            //   this.drawMouseControl();
           }
           else {
               // when mouse stops moving, start fading out the opacity slowly
@@ -415,7 +415,7 @@ var StarField = /** @class */ (function () {
               // just kinda hacked in a rough approximation by feel on my machine lol
               // good enough for now
               this.mouseControlAlpha -= (0.25 * this.deltaTime) / this.UIFadeDelay;
-              this.drawMouseControl();
+            //   this.drawMouseControl();
           }
       }
       // update and draw all the stars
